@@ -7,12 +7,12 @@ services:
     region: ohio
     buildCommand: bundle install
     startCommand: bundle exec sidekiq -r ./main.rb
-    envVars:
-      - key: REDIS_URL
-        fromService:
-          type: redis
-          name: sidekiq-redis
-          property: connectionString
+#     envVars:
+#       - key: REDIS_URL
+#         fromService:
+#           type: redis
+#           name: sidekiq-redis
+#           property: connectionString
 
   # Create the web server hosting sinatra
   - type: web
@@ -21,16 +21,16 @@ services:
     region: ohio
     buildCommand: bundle install
     startCommand: bundle exec ruby main.rb
-    envVars:
-      - key: REDIS_URL
-        fromService:
-          type: redis
-          name: sidekiq-redis
-          property: connectionString
+#     envVars:
+#       - key: REDIS_URL
+#         fromService:
+#           type: redis
+#           name: sidekiq-redis
+#           property: connectionString
           
     # Create a redis instance
-  - type: redis
-    name: sidekiq-redis
-    region: ohio
-    maxmemoryPolicy: noeviction
-    ipAllowList: []
+#   - type: redis
+#     name: sidekiq-redis
+#     region: ohio
+#     maxmemoryPolicy: noeviction
+#     ipAllowList: []
