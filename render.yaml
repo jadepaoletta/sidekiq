@@ -1,10 +1,4 @@
 services:
-  # Create a redis instance
-  - type: redis
-    name: sidekiq-redis
-    region: ohio
-    maxmemoryPolicy: noeviction
-    ipAllowList: []
 
   # Let's create our background worker
   - type: worker
@@ -33,3 +27,10 @@ services:
           type: redis
           name: sidekiq-redis
           property: connectionString
+          
+    # Create a redis instance
+  - type: redis
+    name: sidekiq-redis
+    region: ohio
+    maxmemoryPolicy: noeviction
+    ipAllowList: []
